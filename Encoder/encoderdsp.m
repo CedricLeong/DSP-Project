@@ -42,7 +42,7 @@ List = [100 200 300; 100 200 400; 100 200 500; 100 150 300; 100 150 400;
 %create hamonic noise:
 Light_Noise = Signal + 0.05 * normrnd(0,1,length(Signal),1);
 %create White Noise to Signal:
-Heavy_Noise = awgn(Signal,1);
+Heavy_Noise = awgn(Signal,15);
 
 % Plot all signals Generated:
         figure
