@@ -1,4 +1,7 @@
 function encoderdsp
+clc
+clear all
+
 %DSP Project Encoder
 %Tanvir Mudhar
 %November 6 2014
@@ -18,15 +21,19 @@ List = [100 200 300; 100 200 400; 100 200 500; 100 150 300; 100 150 400;
  Sampling = 8000; % sampling for sound must be atleast 8000
 
  LengthN = length(num); % number of digits
-  
- Signal = zeros(N0,1);   % Fill Array with Zeros
+%We should take these out, but i am keeping them in for now to initialize
+            interval = 50e-3;
+            N0 = floor(interval*Sampling);
+            Signal = zeros(N0,1);   % Fill Array with Zeros
+            IndexDuration =  zeros(LengthN,1) % Fill Array with Zeros
 % generate signal for number number
      for i = 1: LengthN
-          duration = 40e-3+(55e-3-40e-3).*rand(1); % duration specified by prof
+          duration = 10e-3+(50e-3-10e-3).*rand(1); % duration specified by prof
           interval = 40e-3+(60e-3-40e-3).*rand(1); % interval specified by prof
           Ns = floor(duration*Sampling);  % signal
           N0 = floor(interval*Sampling);  % silence period
-          
+          %Array of Intervals:
+          IndexDuration=[IndexDuration; duration; interval]
          k = 1:Ns;
          number = str2double(num(i)); % convert string to doubles
          %Looks at the valyes in the List above to see which freqs need to
@@ -74,17 +81,17 @@ Heavy_Noise = awgn(Signal,.0005);
         plot(abs(fft(Heavy_Noise)));
         title('FFT of Heavy Noise Signal')
         
-%Generate Sound for all signals 1) Normal, 2) Noisy 3) heavily Noisy
-  prompt='press any key to hear original tone'
-        pause;
-        sound(Signal, Sampling)
-  prompt='press any key to hear noisy tone'
-        pause;
-        sound(Light_Noise, Sampling)
-  prompt='press any key to hear heavily noisy tone'
-        pause;
-        sound(Heavy_Noise, Sampling)
-  prompt='end of encoder sequence'
+% %Generate Sound for all signals 1) Normal, 2) Noisy 3) heavily Noisy
+%   prompt='press any key to hear original tone'
+%         pause;
+%         sound(Signal, Sampling)
+%   prompt='press any key to hear noisy tone'
+%         pause;
+%         sound(Light_Noise, Sampling)
+%   prompt='press any key to hear heavily noisy tone'
+%         pause;
+%         sound(Heavy_Noise, Sampling)
+%   prompt='end of encoder sequence'
 
  
  
