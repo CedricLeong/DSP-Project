@@ -16,18 +16,17 @@ List = [100 200 300; 100 200 400; 100 200 500; 100 150 300; 100 150 400;
          100 150 500; 75 200 300; 75 200 400; 75 200 500; 75 150 300];
  %Initial Values
  Sampling = 8000; % sampling for sound must be atleast 8000
- duration = 40e-3+(55e-3-40e-3).*rand(1); % duration specified by prof
- interval = 40e-3+(60e-3-40e-3).*rand(1); % interval specified by prof
- 
- Ns = floor(duration*Sampling);  % signal
- 
- N0 = floor(interval*Sampling);  % silence period
- 
+
  LengthN = length(num); % number of digits
   
  Signal = zeros(N0,1);   % Fill Array with Zeros
 % generate signal for number number
      for i = 1: LengthN
+          duration = 40e-3+(55e-3-40e-3).*rand(1); % duration specified by prof
+          interval = 40e-3+(60e-3-40e-3).*rand(1); % interval specified by prof
+          Ns = floor(duration*Sampling);  % signal
+          N0 = floor(interval*Sampling);  % silence period
+          
          k = 1:Ns;
          number = str2double(num(i)); % convert string to doubles
          %Looks at the valyes in the List above to see which freqs need to
