@@ -72,13 +72,16 @@ Heavy_Noise = awgn(Signal,15);
         title('FFT of Heavy Noise Signal')
         
   %Generate Sound for all signals 1) Normal, 2) Noisy 3) heavily Noisy
+  prompt='press any key to hear original tone'
         pause;
         sound(Signal, Sampling)
+  prompt='press any key to hear noisy tone'
         pause;
         sound(Light_Noise, Sampling)
+  prompt='press any key to hear heavily noisy tone'
         pause;
         sound(Heavy_Noise, Sampling)
-        
+  prompt='end of encoder sequence'
 
  
  
