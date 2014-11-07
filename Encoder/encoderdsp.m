@@ -75,7 +75,7 @@ Heavy_Noise = awgn(Signal,.0005);
         plot(abs(fft(Heavy_Noise)));
         title('FFT of Heavy Noise Signal')
         
-  %Generate Sound for all signals 1) Normal, 2) Noisy 3) heavily Noisy
+%Generate Sound for all signals 1) Normal, 2) Noisy 3) heavily Noisy
   prompt='press any key to hear original tone'
         pause;
         sound(Signal, Sampling)
