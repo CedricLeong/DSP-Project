@@ -1,4 +1,4 @@
-function [A] = numbers(telNum)
+function [A] = PhoneNumber(telNum)
    
     numDigits = length(telNum);
     table = [100 200 300;  % number 1
@@ -23,15 +23,15 @@ function [A] = numbers(telNum)
         f3 = table (freqNum,3);
 
         %Determine length of signal, 40-60ms 
-        rnd = (55-40)*rand(1) + 55;
+       % rnd = (55-40)*rand(1) + 55;
 
         %Create time vector according to random length
-        t = 0:.001:rnd;
+        t = 0:.001:2*pi;
 
         %Convolve the frequencies using the length. Sort signal in array, each
         %number has it's own column.
-        sig(1,i) = conv(sin(2*pi*f1*t),conv(sin(2*pi*f2*t), sin(t*2*pi*f3)));
-
+        sig = conv(sin(2*pi*f1*t),conv(sin(2*pi*f2*t), sin(t*2*pi*f3)));
+        sigT = transpose(sig);
+        A(i) = sigT;
     end
-    
 end
