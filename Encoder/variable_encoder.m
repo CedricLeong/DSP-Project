@@ -15,14 +15,14 @@ LengthN = length(num); % number of digits
 %user defined digit periods
 DigitPeriod = zeros(1,LengthN); 
 for i = 1:LengthN
-    prompt ='Input period of tone (in ms):';
+    prompt ='Tone Signal in milliseconds', num2str(i), ': ';
     DigitPeriod(i)=input(prompt);
 end
 
 %user defined silent periods
 SilentPeriod = zeros(1,LengthN);
 for i = 1:(LengthN-1)
-    prompt ='Input period of silence (in ms):';
+    prompt ='Silence Signal in milliseconds: ';
     SilentPeriod(i)=input(prompt);
 end
 
@@ -32,11 +32,11 @@ List = [100 200 300; 100 200 400; 100 200 500; 100 150 300; 100 150 400;
  %Initial Values
  Sampling = 8000; % sampling for sound must be atleast 8000
  
-%not sure what these do?
+% %not sure what these do? ANS: These initialize the matrixies
             interval = 50e-3;
             N0 = floor(interval*Sampling);
             Signal = zeros(N0,1);   % Fill Array with Zeros
-            IndexDuration =  zeros(LengthN,1); % Fill Array with Zeros
+            %IndexDuration =  zeros(LengthN,1); % Fill Array with Zeros
 
 % generate signal for number number
      for i = 1: LengthN
@@ -45,7 +45,6 @@ List = [100 200 300; 100 200 400; 100 200 500; 100 150 300; 100 150 400;
           Ns = floor(duration*Sampling);  % signal
           N0 = floor(interval*Sampling);  % silence period
           %Array of Intervals:
-         IndexDuration=[IndexDuration; duration; interval];
          k = 1:Ns;
          number = str2double(num(i)); % convert string to doubles
          %Looks at the valyes in the List above to see which freqs need to
