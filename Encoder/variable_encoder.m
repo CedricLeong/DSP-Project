@@ -15,15 +15,25 @@ LengthN = length(num); % number of digits
 %user defined digit periods
 DigitPeriod = zeros(1,LengthN); 
 for i = 1:LengthN
+<<<<<<< HEAD
     prompt ='Tone Signal in milliseconds', num2str(i), ': ';
     DigitPeriod(i)=input(prompt);
+=======
+    fprintf('Input period of tone %d(in ms)',i)
+    DigitPeriod(i)=input('');
+>>>>>>> origin/master
 end
 
 %user defined silent periods
 SilentPeriod = zeros(1,LengthN);
 for i = 1:(LengthN-1)
+<<<<<<< HEAD
     prompt ='Silence Signal in milliseconds: ';
     SilentPeriod(i)=input(prompt);
+=======
+    fprintf('Input period of silence %d (in ms):',i)
+    SilentPeriod(i)=input('');
+>>>>>>> origin/master
 end
 
 %frequencies
