@@ -10,7 +10,7 @@ clc
 
 %Asks for the sequence from the use the converts to string for use by
 %forloop
-prompt ='what is your sequence?';
+prompt ='what is your sequence? ';
 sequence =input(prompt,'s');
 num = sequence;
 LengthN = length(num); % number of digits
