@@ -8,12 +8,25 @@ function variable_encoder
 clear all
 clc
 
+%Asks for the sequence from the use the converts to string for use by
+%forloop
+prompt ='what is your sequence? ';
+sequence =input(prompt,'s');
+num = sequence;
+LengthN = length(num); % number of digits
+%user defined digit periods
+DigitPeriod = zeros(1,LengthN); 
+for i = 1:LengthN
+    fprintf('Input period of tone %d(in ms)',i)
+    DigitPeriod(i)=input('');
+end
 
-
-num= '123456789';
-LengthN = length(num)
-DigitPeriod= [50 50 50 50 50 50 50 50 50];
-SilentPeriod= [50 50 50 50 50 50 50 50 50];
+%user defined silent periods
+SilentPeriod = zeros(1,LengthN);
+for i = 1:(LengthN)
+    fprintf('Input period of silence %d (in ms):',i)
+    SilentPeriod(i)=input('');
+end
 
 %frequencies
 List = [100 200 300; 100 200 400; 100 200 500; 100 150 300; 100 150 400; 
