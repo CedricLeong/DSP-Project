@@ -91,4 +91,4 @@ Heavy_Noise = awgn(Signal,.0005);
 %   prompt='press any key to hear heavily noisy tone'
 %         pause;
 %         sound(Heavy_Noise, Sampling)
-%   prompt='end of encoder sequence'
+  prompt='end of encoder sequence'
