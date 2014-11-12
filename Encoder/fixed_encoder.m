@@ -1,4 +1,4 @@
-function fixed_encoder
+function[Signal]=fixed_encoder()
 
 %updated tanvir's code with user defined periods
 %the first silent period is fixed to be 50 ms, but can be changed if needed
@@ -48,25 +48,6 @@ List = [100 200 300; 100 200 400; 100 200 500; 100 150 300; 100 150 400;
      end
 %create White Noise to Signal:
 Heavy_Noise = awgn(Signal,.0005);
-
-% Plot all signals Generated:
-        figure
-        
-        subplot(2,2,1) % first subplot
-        plot(Signal)
-        title('Signal (Time)')
-
-        subplot(2,2,2) % second subplot
-        plot(abs(fft(Signal)))
-        title('FFT of Signal')
- 
-        subplot(2,2,3) % third subplot
-        plot(Heavy_Noise);
-        title('Heavy Noise Signal')
-
-        subplot(2,2,4) % fourth subplot
-        plot(abs(fft(Heavy_Noise)));
-        title('FFT of Heavy Noise Signal')
         
 % %Generate Sound for all signals 1) Normal, 2) Noisy 3) heavily Noisy
 %   prompt='press any key to hear original tone'
