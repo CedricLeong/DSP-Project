@@ -1,4 +1,4 @@
-function variable_encoder
+function fixed_encoder
 
 %updated tanvir's code with user defined periods
 %the first silent period is fixed to be 50 ms, but can be changed if needed
@@ -11,7 +11,7 @@ clc
 
 
 num= '123456789';
-LengthN = length(num)
+LengthN = length(num);
 DigitPeriod= [50 50 50 50 50 50 50 50 50];
 SilentPeriod= [50 50 50 50 50 50 50 50 50];
 
