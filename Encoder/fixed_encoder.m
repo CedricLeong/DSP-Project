@@ -1,4 +1,4 @@
-function[Signal]=fixed_encoder()
+function [Signal] = fixed_encoder()
 
 %updated tanvir's code with user defined periods
 %the first silent period is fixed to be 50 ms, but can be changed if needed
@@ -10,10 +10,10 @@ clc
 
 
 
-num= '123456789';
+num= '2';
 LengthN = length(num);
-DigitPeriod= [50 50 50 50 50 50 50 50 50];
-SilentPeriod= [50 50 50 50 50 50 50 50 50];
+DigitPeriod= [50];
+SilentPeriod= [50];
 
 %frequencies
 List = [100 200 300; 100 200 400; 100 200 500; 100 150 300; 100 150 400; 
@@ -60,3 +60,4 @@ Heavy_Noise = awgn(Signal,.0005);
 %         pause;
 %         sound(Heavy_Noise, Sampling)
 %   prompt='end of encoder sequence'
+end
