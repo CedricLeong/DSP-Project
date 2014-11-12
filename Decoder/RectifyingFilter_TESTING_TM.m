@@ -15,13 +15,13 @@ function [Signal] = RectifyingFilter()
 	addpath (newPath);
 
 	clc;
-	%close all;
+	close all;
 	Signal = fixed_encoder_TESTING_TM (); %Fetch the signal from the encoder
 	len = length(Signal);	%Get length of signal 
 	Fs = 10000; %Sampling frequency
 
 	Wp75 = [60,90]/(0.5*Fs); Ws75 = [25,200]/(Fs*0.5);
-	Rp75 = 2; Rs75 = 60;
+% 	Rp75 = 2; Rs75 = 60;
 	[n75,Wp75] = ellipord (Wp75,Ws75,Rp75,Rs75);
     [b75,a75] = ellip(n75,Rp75,Rs75,Wp75);          % Elliptic filter design
    
