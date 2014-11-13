@@ -40,4 +40,21 @@ i=1;
         end
         i=i+1;
     end
+    l2=length(startP);
+for i=1:l2
+    A1=startP(i);
+    B1=endP(i);
+    if (B1-A1)>600
+        startP(i)=[0];
+        endP(i)=[0];
+    end
+    if (B1-A1)<400
+        startP(i)=[0];
+        endP(i)=[0];
+    end
 end
+endP(endP==0)=[];
+startP(startP==0)=[];
+end
+
+
