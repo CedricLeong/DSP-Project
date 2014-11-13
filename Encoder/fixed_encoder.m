@@ -10,14 +10,14 @@ clc
 
 
 
-num= '1234567890';
+num= '444';
 LengthN = length(num);
-DigitPeriod= [50 50 50 50 50 50 50 50 50 50 ];
-SilentPeriod= [50 50 50 50 50 50 50 50 50 50 50 ];
+DigitPeriod= [50 50 50];
+SilentPeriod= [50 50 50];
 
 %frequencies
-List = [100 200 300; 100 200 400; 100 200 500; 100 150 300; 100 150 400; 
-         100 150 500; 75 200 300; 75 200 400; 75 200 500; 75 150 300];
+List = [75 150 300; 100 200 300; 100 200 400; 100 200 500; 100 150 300; 100 150 400; 
+         100 150 500; 75 200 300; 75 200 400; 75 200 500];
  %Initial Values
             Sampling = 10000; % sampling for sound must be atleast 8000
  %Initate variables         
