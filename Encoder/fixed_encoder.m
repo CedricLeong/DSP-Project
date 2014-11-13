@@ -10,10 +10,10 @@ clc
 
 
 
-num= '0';
+num= '1234567890';
 LengthN = length(num);
-DigitPeriod= [50];
-SilentPeriod= [50 ];
+DigitPeriod= [50 50 50 50 50 50 50 50 50 50 ];
+SilentPeriod= [50 50 50 50 50 50 50 50 50 50 50 ];
 
 %frequencies
 List = [100 200 300; 100 200 400; 100 200 500; 100 150 300; 100 150 400; 
