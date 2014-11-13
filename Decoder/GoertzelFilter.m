@@ -1,4 +1,4 @@
-function [dftAllDigi,freqsPlane] = GoertzelFilter ()
+function [dftAllDigi] = GoertzelFilter ()
 %%This is just pathing. Ignore the next four lines.
 curDir   = pwd; 
 mainDir  = fileparts(fileparts(curDir));
@@ -26,10 +26,8 @@ for i=1:numDigit
     dftCurrentDigi = goertzel(digiArray,freq_indices); 
     if i==1
         dftAllDigi = dftCurrentDigi;
-        freqsPlane = transpose(freq_indices);
     else
         dftAllDigi = [dftAllDigi dftCurrentDigi];
-        freqsPlane = [freqsPlane transpose(freq_indices)];
     end
 end
 end
