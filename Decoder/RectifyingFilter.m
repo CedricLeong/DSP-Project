@@ -15,7 +15,7 @@ function [Signal] = RectifyingFilter()
 	addpath (newPath);
 
 	close all;
-	[Signal,No] = fixed_encoder (); %Fetch the signal from the encoder
+	[Signal] = fixed_encoder (); %Fetch the signal from the encoder
 	len = length(Signal);	%Get length of signal 
 	
 
@@ -41,7 +41,7 @@ function [Signal] = RectifyingFilter()
     plot(f,2*abs(Y(1:NFFT/2+1)));
     title('75Hz');
     axis([0 500 0 1]);
-    figure
+    figure;
 
 	Wp100 = [60,140]/(0.5*Fs); Ws100 = [30,260]/(0.5*Fs);
 	Rp100 = 2; Rs100 = 60;
@@ -66,7 +66,7 @@ function [Signal] = RectifyingFilter()
  %    figure;
  %    Sig3 = fft(filter(b150,a150,Signal));
  %    Y = fft(Sig3,NFFT)/L;
- %    plot(f,2*abs(Y(1:NFFT/2+1)))
+ %    plot(f,2*abs(Y(1:NFFT/2+1)));
  %    title('150Hz');
  %    axis([0 500 0 1]);
 
@@ -79,7 +79,7 @@ function [Signal] = RectifyingFilter()
  %    figure;
  %    Sig4 = fft(filter(b200,a200,Signal));
  %    Y = fft(Sig4,NFFT)/L;
- %    plot(f,2*abs(Y(1:NFFT/2+1))) 
+ %    plot(f,2*abs(Y(1:NFFT/2+1))) ;
  %    title('200Hz');   
  %    axis([0 500 0 1]);
 

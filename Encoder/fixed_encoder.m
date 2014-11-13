@@ -10,10 +10,10 @@ clc
 
 
 
-num= '2';
+num= '0';
 LengthN = length(num);
 DigitPeriod= [50];
-SilentPeriod= [50];
+SilentPeriod= [50 ];
 
 %frequencies
 List = [100 200 300; 100 200 400; 100 200 500; 100 150 300; 100 150 400; 
