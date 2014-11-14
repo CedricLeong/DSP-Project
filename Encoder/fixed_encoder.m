@@ -39,15 +39,15 @@ List = [75 150 300; 100 200 300; 100 200 400; 100 200 500; 100 150 300; 100 150 
          Freq2 = List(number+1,2);
          Freq3 = List(number+1,3);
          ToneSignal =(1+ rand(1))*(sin(2.*pi.*Freq1.*k./Sampling)...
-             + sin(2.*pi.*Freq2.*k./Sampling)...
-             + sin(2.*pi.*Freq3.*k./Sampling));  % maximal amplitude is 2
+             + (1+ rand(1))*sin(2.*pi.*Freq2.*k./Sampling)...
+             + (1+ rand(1))*sin(2.*pi.*Freq3.*k./Sampling));  % maximal amplitude is 2
          %Creates a matrix to store all signals computed above into a
          %matrix, ":" operant makes the rows of the maxtrix columbs. and
          %then adds a zeros matrix to fill the "intervals".
          Signal = [Signal; ToneSignal(:); zeros(N0,1)];
      end
 %create White Noise to Signal:
-Heavy_Noise = awgn(Signal,.0005);
+Heavy_Noise = awgn(Signal,10);
         
 % %Generate Sound for all signals 1) Normal, 2) Noisy 3) heavily Noisy
 %   prompt='press any key to hear original tone'
