@@ -1,5 +1,7 @@
 function [LogicMatrix] = DigitOutput
 close all
+clear all 
+clc
 [a] = GoertzelFilter;
 sizesA = size(a);
 col = sizesA(1,2);
@@ -7,15 +9,18 @@ f = [75 100 150 200 300 400 500];
 f1=[0:500];
 binaryN= [];
 for i=1:col
-    AveGoert= mean(a((1:7),i));
-    bin1= a((1:7),i)>AveGoert;
+    array1=a((1:7),i);
+    a1=sort(array1,'descend');
+    bin1= array1>=a1(3);
+%     AveGoert= mean(a((1:7),i));
+%     bin1= a((1:7),i)>AveGoert;
     binaryN = [binaryN bin1];
-   figure;
-   stem(f,abs(a((1:7),i)));
-   hold
-   plot(f1,AveGoert)
+%    figure;
+%    stem(f,abs(a((1:7),i)));
+%    hold
+%    plot(f1,AveGoert)
 end
-binaryNTr= transpose(binaryN)
+binaryNTr= transpose(binaryN);
 BTd=bi2de(binaryNTr,'left-msb');
 
 
@@ -29,8 +34,8 @@ for i =1:LenD
     a=circshift(a,[-1,-1]);
     Output=[Output digitMatrix(a)];    
 end
-X='The Decoded Digits are : '
-Output(:)
+fprintf('The Decoded Digits are :')
+Output
     
 
 end
