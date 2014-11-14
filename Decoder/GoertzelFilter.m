@@ -21,14 +21,14 @@ numDigit = length(startP); %checks how many digits for later computations.
 
 for i=1:numDigit
     digiArray = Signal(startP(i):endP(i));
-    N = length(digiArray);
-    freq_indices = round(f/Fs*N) + 1;
-    dftCurrentDigi = goertzel(digiArray,freq_indices); 
+    digiArray = transpose(digiArray);
+    dftCurrentDigi = Goertzel1(digiArray); 
     if i==1
         dftAllDigi = dftCurrentDigi;
     else
-        dftAllDigi = [dftAllDigi dftCurrentDigi];
+        dftAllDigi = [dftAllDigi; dftCurrentDigi];
     end
 end
+dftAllDigi=transpose(dftAllDigi);
 end
 
