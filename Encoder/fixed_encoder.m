@@ -1,4 +1,4 @@
-function [Heavy_Noise] = fixed_encoder()
+function [Signal] = fixed_encoder()
 
 %updated tanvir's code with user defined periods
 %the first silent period is fixed to be 50 ms, but can be changed if needed
@@ -10,7 +10,7 @@ clc
 
 
 
-num= '1234';
+num= '1234567890';
 LengthN = length(num);
 DigitPeriod= [50 50 50 50 50 50 50 50 50 50];
 SilentPeriod= [50 50 50 50 50 50 50 50 50 50];
@@ -47,8 +47,7 @@ List = [75 150 300; 100 200 300; 100 200 400; 100 200 500; 100 150 300; 100 150 
          Signal = [Signal; ToneSignal(:); zeros(N0,1)];
      end
 %create White Noise to Signal:
-Heavy_Noise = awgn(Signal,15);
-plot(Heavy_Noise);
+Heavy_Noise = awgn(Signal,.0005);
         
 % %Generate Sound for all signals 1) Normal, 2) Noisy 3) heavily Noisy
 %   prompt='press any key to hear original tone'
