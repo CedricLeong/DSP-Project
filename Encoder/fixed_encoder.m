@@ -10,10 +10,10 @@ clc
 
 
 
-num= '1234567890';
+num= '9050001234';
 LengthN = length(num);
-DigitPeriod= [50 50 50 50 50 50 50 50 50 50];
-SilentPeriod= [50 50 50 50 50 50 50 50 50 50];
+DigitPeriod= [50 40 20 40 50 55 40 40 50 40];
+SilentPeriod= [50 50 50 60 40 50 50 50 50 50];
 
 %frequencies
 List = [75 150 300; 100 200 300; 100 200 400; 100 200 500; 100 150 300; 100 150 400; 
@@ -47,7 +47,7 @@ List = [75 150 300; 100 200 300; 100 200 400; 100 200 500; 100 150 300; 100 150 
          %then adds a zeros matrix to fill the "intervals".
          Signal = [Signal; ToneSignal(:); zeros(N0,1)];
      end
-     plot(Signal)
+%      plot(Signal)
 %create White Noise to Signal:
 Heavy_Noise = awgn(Signal,10);
         

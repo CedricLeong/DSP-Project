@@ -41,3 +41,14 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+Decoder/Goertzel.asv
+Decoder/DigitOutput.asv
+Decoder/DigitOutput.m
+Encoder/fixed_encoder.m
+Encoder/fixed_encoder.m
+Encoder/fixed_encoder.m
+*.asv
+Encoder/fixed_encoder.m
+Decoder/DigitOutput.m
+Encoder/fixed_encoder.m
