@@ -20,7 +20,7 @@ f = [75 100 150 200 300 400 500];
 numDigit = length(startP); %checks how many digits for later computations.
 
 for i=1:numDigit
-    digiArray = Signal(startP(i):endP(i));
+    digiArray = Signal(startP(i):(startP(i)+400));
     digiArray = transpose(digiArray);
     dftCurrentDigi = Goertzel1(digiArray); 
     if i==1
