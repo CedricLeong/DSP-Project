@@ -15,8 +15,8 @@ X=[1 0 1 0 1 0 0;
 
 num= '1234567890';
 LengthN = length(num);
-duration = [50,50,50,50,50,50,50,50,50,50];
-silence = [50,50,50,50,50,50,50,50,50,50];
+duration = [50 50 50 50 50 50 50 50 50 50];
+silence = [50 50 50 50 50 50 50 50 50 50];
 binArray = [];
 
 for i=1:LengthN 
@@ -56,9 +56,9 @@ for i=1:LengthN
 
 end
 
-t = length(binArray);
-t = 1:t;
-t = transpose(t);
+Length = length(binArray)/1000;
 
-ts = timeseries(binArray,t);
-save binArray.MAT -v7.3 ts;
+timeVector=.001:.001:Length;
+timeVector=transpose(timeVector);
+binArray=[timeVector,binArray];
+save binArray.MAT -v7.3 binArray;
