@@ -19,6 +19,10 @@ duration = [50 50 50 50 50 50 50 50 50 50];
 silence = [50 50 50 50 50 50 50 50 50 50];
 binArray = [];
 
+for i=1:50; %inital padding
+    zero = [0 0 0 0 0 0 0];
+    binArray = [binArray; zero];
+end
 for i=1:LengthN 
 %These statements pull the appropriate binary frequencies vector
     if (num(i)=='0') 
