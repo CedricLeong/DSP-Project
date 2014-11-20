@@ -1,18 +1,10 @@
 function [AbsoluteOutput]=Goertzel1(signal)
-%create a three frequency tone to specifications
-% Freq1=100;
-% Freq2=150;
-% Freq3=200;
-% Sampling=8000;
-% duration = 50*1e-3; % duration specified in prompt
-% Ns = floor(duration*Sampling);
-% k = 1:Ns;
-% x=sin(2.*pi.*Freq1.*k./Sampling) + sin(2.*pi.*Freq2.*k./Sampling)+ sin(2.*pi.*Freq3.*k./Sampling);
+
 x=signal;
-S=400;
-f=[75 100 150 200 300 400 500];
-N=[f*S/8000];
-N=round(N);
+S=400;                              % N value
+f=[75 100 150 200 300 400 500];     % Filter Bank
+N=[(f*S/8000)];                     % generates the K values
+N=round(N);                         % rounds K values into an integer
 
 %create band pass filters
 b75=[1];
@@ -38,9 +30,10 @@ a500=[1 -2*cos(2*pi*N(7)/S) 1];
 % [w6, f]=freqz([1 -exp(-2*pi*N(6)/S)],a400,512,8000);
 % [w7, f]=freqz([1 -exp(-2*pi*N(7)/S)],a500,512,8000);
 % plot(f,abs(w1), f,abs(w2), f,abs(w3), f,abs(w4) ,f,abs(w5) ,f,abs(w6));grid
+% xlim([0 500])
 % xlabel('Frequency (Hz)');
 
-%creates filters
+% Filter bank frequency responses
 SigFilt=[x];
 y75=filter(1,a75,SigFilt);
 y100=filter(1,a100,SigFilt);
@@ -49,8 +42,9 @@ y200=filter(1,a200,SigFilt);
 y300=filter(1,a300,SigFilt);
 y400=filter(1,a400,SigFilt);
 y500=filter(1,a500,SigFilt);
+plot(y400)
 
-%not sure what this does
+% Determines the absolute magnitudes of DFT coefficents
 m(1)=sqrt(y75((S-1))^2+y75(S)^2- ...
      2*cos(2*pi*18/S)*y75((S-1))*y75(S));
 m(2)=sqrt(y100((S-1))^2+y100(S)^2- ...
@@ -65,8 +59,10 @@ m(6)=sqrt(y400((S-1))^2+y400(S)^2- ...
      2*cos(2*pi*34/S)*y400((S-1))*y400(S));
 m(7)=sqrt(y500((S-1))^2+y500(S)^2- ...
      2*cos(2*pi*38/S)*y500((S-1))*y500(S));
-m=2*m/S;
-% avg=mean(m);  %based on empirical measurement
+m=2*m/S;               %Converts DFT magnitude to the single sided spectrum
+
+%Below used to plot the single sided spectrum for testing purposes
+% avg=mean(m);  
 % f=[75 100 150 200 300 400 500];
 % f1=[0:500];
 % x1=[1:500];

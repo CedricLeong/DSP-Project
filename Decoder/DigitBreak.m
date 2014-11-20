@@ -28,28 +28,27 @@ Signal = fixed_encoder();
 
 
 L=length(Signal);%Length of signal
-Signal=abs(Signal);%Computes the absoulte of the signal
+Signal=abs(Signal);%Computes the absolute of the signal
 AVG=mean(Signal);%Computes the average of the time domain signal
 startP=[];%Start point array
 endP=[];%End point array
 i=1;
 
-%This while loop creates a window of 200 samples.
     while i <= L-200 
         
         test=Signal(i)>AVG; %A sample in the window is compared to the AVG
-        if test==1          %If a sample is greater than AVG, then give
-         startP=[startP i]; %startP a value
+        if test==1          %If a sample is greater than AVG, then save
+         startP=[startP i]; %adds sample to start array
          
          %This loop creates a 200 sample window and compares the samples
          %to the average
             for k=i:(L-200)
-                testarray=Signal(k:(k+200));
+                testarray=Signal(k:(k+200)); %creates a 200 sample window 
                 test1=testarray>AVG;
                 sumarray=sum(test1);
-                if sumarray==0 %Give no samples in the array is smaller,
-                    endP=[endP k]; %mark this as an end point.
-                    i=k;
+                if sumarray==0 %If all 200 samples are lower than average
+                    endP=[endP k]; %mark this as an end point
+                    i=k; %set i to the location of end point
                     break
                 end
             end
@@ -91,7 +90,7 @@ end
 endP(endP==0)=[];
 startP(startP==0)=[];
 % This part of the code was put here to check spacing
-% This will be implement if regecting spacing makes sense
+% This will be implement if rejecting spacing makes sense
 % for i=1:l2
 %     B1=endP((i));
 %     A2=startP(i+1);
