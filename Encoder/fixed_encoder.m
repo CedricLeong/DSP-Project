@@ -5,19 +5,14 @@ function [Signal] = fixed_encoder()
 %we could also let the user define the amount of noise
 %also removed harmonic noise
 
-clear all
-clc
-
-
-
-num= '9050001234';
-LengthN = length(num);
-DigitPeriod= [50 40 20 40 50 55 40 40 50 40];
-SilentPeriod= [50 50 50 60 40 50 50 50 50 50];
+num= '2'; %user defined number
+LengthN = length(num); 
+DigitPeriod= [50]; %duration of tones
+SilentPeriod= [50]; %silent period after each tone
 
 %frequencies
-List = [75 150 300; 100 200 300; 100 200 400; 100 200 500; 100 150 300; 100 150 400; 
-         100 150 500; 75 200 300; 75 200 400; 75 200 500];
+List = [75 150 300; 100 200 300; 100 200 400; 100 200 500; 100 150 300; 
+    100 150 400; 100 150 500; 75 200 300; 75 200 400; 75 200 500];
  %Initial Values
             Sampling = 8000; % sampling for sound must be atleast 8000
             T=1/Sampling;
@@ -47,9 +42,9 @@ List = [75 150 300; 100 200 300; 100 200 400; 100 200 500; 100 150 300; 100 150 
          %then adds a zeros matrix to fill the "intervals".
          Signal = [Signal; ToneSignal(:); zeros(N0,1)];
      end
-%      plot(Signal)
+
 %create White Noise to Signal:
-Heavy_Noise = awgn(Signal,10);
+Signal = awgn(Signal,100);
         
 % %Generate Sound for all signals 1) Normal, 2) Noisy 3) heavily Noisy
 %   prompt='press any key to hear original tone'
