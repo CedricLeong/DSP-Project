@@ -22,16 +22,17 @@ a400=[1 -2*cos(2*pi*N(6)/S) 1];
 b500=[1];
 a500=[1 -2*cos(2*pi*N(7)/S) 1];
 %plot freq response of BPF
-% [w1, f]=freqz([1 -exp(-2*pi*N(1)/S)],a75,512,8000);
-% [w2, f]=freqz([1 -exp(-2*pi*N(2)/S)],a100,512,8000);
-% [w3, f]=freqz([1 -exp(-2*pi*N(3)/S)],a150,512,8000);
-% [w4, f]=freqz([1 -exp(-2*pi*N(4)/S)],a200,512,8000);
-% [w5, f]=freqz([1 -exp(-2*pi*N(5)/S)],a300,512,8000);
-% [w6, f]=freqz([1 -exp(-2*pi*N(6)/S)],a400,512,8000);
-% [w7, f]=freqz([1 -exp(-2*pi*N(7)/S)],a500,512,8000);
-% plot(f,abs(w1), f,abs(w2), f,abs(w3), f,abs(w4) ,f,abs(w5) ,f,abs(w6));grid
-% xlim([0 500])
-% xlabel('Frequency (Hz)');
+[w1, f]=freqz([1 -exp(-2*pi*N(1)/S)],a75,4096,8000);
+[w2, f]=freqz([1 -exp(-2*pi*N(2)/S)],a100,4096,8000);
+[w3, f]=freqz([1 -exp(-2*pi*N(3)/S)],a150,4096,8000);
+[w4, f]=freqz([1 -exp(-2*pi*N(4)/S)],a200,4096,8000);
+[w5, f]=freqz([1 -exp(-2*pi*N(5)/S)],a300,4096,8000);
+[w6, f]=freqz([1 -exp(-2*pi*N(6)/S)],a400,4096,8000);
+[w7, f]=freqz([1 -exp(-2*pi*N(7)/S)],a500,4096,8000);
+plot(f,abs(w1),f,abs(w2),f,abs(w3),f,abs(w4),f,abs(w5),f,abs(w6),f,abs(w7));
+grid;xlim([0 550]);xlabel('Frequency (Hz)');ylabel('Magnitude'); 
+title('Frequency Response of Filters');
+
 
 % Filter bank frequency responses
 SigFilt=[x];
@@ -72,4 +73,5 @@ m=2*m/S;               %Converts DFT magnitude to the single sided spectrum
 % hold; plot(x1,avg);
 % xlabel('Frequency (Hz)');
 % ylabel('Absolute output values');
+% title('Detected Frequencies');
 AbsoluteOutput=m;
