@@ -28,22 +28,22 @@ Signal = fixed_encoder();
 
 
 L=length(Signal);%Length of signal
+Signal1 = abs(tsmovavg(Signal,'s',9,1));%Filters signal with a moving average 
 Signal=abs(Signal);%Computes the absolute of the signal
-AVG=mean(Signal);%Computes the average of the time domain signal
+AVG=mean(Signal)%Computes the average of the time domain signal
 startP=[];%Start point array
 endP=[];%End point array
 i=1;
-
-    while i <= L-200 
+    while i <= L-200
         
-        test=Signal(i)>AVG; %A sample in the window is compared to the AVG
+        test=Signal1(i)>AVG; %A sample in the window is compared to the AVG
         if test==1          %If a sample is greater than AVG, then save
          startP=[startP i]; %adds sample to start array
          
          %This loop creates a 200 sample window and compares the samples
          %to the average
             for k=i:(L-200)
-                testarray=Signal(k:(k+200)); %creates a 200 sample window 
+                testarray=Signal1(k:(k+200)); %creates a 200 sample window 
                 test1=testarray>AVG;
                 sumarray=sum(test1);
                 if sumarray==0 %If all 200 samples are lower than average
@@ -63,8 +63,8 @@ for i=1:L2
     B1=endP(i);
     distances=[ distances (B1-A1)];
 end
-% fprintf('Estimated length of each signal is:')
-% distances
+fprintf('Estimated length of each signal is:')
+distances
 
 %This loop will reject signals for any value less than 39ms and greater
 %than 56ms.
@@ -74,16 +74,16 @@ for i=1:L2
     if (B1-A1)>560
         startP(i)=[0];
         endP(i)=[0];
-        fprintf('Digit %d was rejected due to length constraints.', ...
-        'Please shorten the length.',i);
-        disp('\n');
+        fprintf('Digit %d was rejected due to length constraints.',i);
+        fprintf('Please shorten the length.')
+        disp(char(10))
     end
     if (B1-A1)<390
         startP(i)=[0];
         endP(i)=[0];
-        fprintf('Digit %d was rejected due to length constraints.', ...
-            'Please increase the length.',i);
-        disp('\n');
+        fprintf('Digit %d was rejected due to length constraints.',i);
+        fprintf('Please increase the length.')
+        disp(char(10))
     end
     
 end
