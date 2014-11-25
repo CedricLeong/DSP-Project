@@ -61,6 +61,10 @@ m(7)=sqrt(y500((S-1))^2+y500(S)^2- ...
      2*cos(2*pi*38/S)*y500((S-1))*y500(S));
 m=2*m/S;               %Converts DFT magnitude to the single sided spectrum
 
+AbsoluteOutput=m;
+
+
+
 %Below used to plot the single sided spectrum for each of the digits.
 % f=[75 100 150 200 300 400 500];
 % f1=[0:500];
@@ -69,4 +73,3 @@ m=2*m/S;               %Converts DFT magnitude to the single sided spectrum
 % xlabel('Frequency (Hz)');
 % ylabel('Absolute output values');
 % title('Detected Frequencies');
-% AbsoluteOutput=m;

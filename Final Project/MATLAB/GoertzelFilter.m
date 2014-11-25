@@ -11,7 +11,6 @@ Signal = fixed_encoder();
 
 numDigit = length(startP); %checks how many digits for later computations.
 
-
 if numDigit==0
     fprintf('No tones Detected');
     dftAllDigi=0;
