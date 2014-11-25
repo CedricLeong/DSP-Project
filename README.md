@@ -23,6 +23,3 @@ Digit Frequencies (Hz)
 8     75, 200, 400
 9     75, 200, 500
 0     75, 150, 300
-
-
-DSP Project
