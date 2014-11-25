@@ -1,15 +1,15 @@
 function [Signal] = fixed_encoder()
 
-num= '12345'; %user defined number
+num= '9057218668'; %user defined number
 LengthN = length(num); 
-DigitPeriod= [50 50 50 50 50]; %duration of tones
-SilentPeriod= [50 50 50 50 50]; %silent period after each tone
+DigitPeriod= [50 50 50 50 50 50 50 50 50 50]; %duration of tones
+SilentPeriod= [50 50 50 50 50 50 50 50 50 50]; %silent period after each tone
 Noise=100;
 %frequencies
 List = [75 150 300; 100 200 300; 100 200 400; 100 200 500; 100 150 300; 
     100 150 400; 100 150 500; 75 200 300; 75 200 400; 75 200 500];
 
-        if(LengthN ~= length(DigitPeriod)||LengthN~=length(SilentPeriod))
+        if(LengthN > length(DigitPeriod)||LengthN>length(SilentPeriod))
             fprintf('You have not incuded enough silences and/or duration periods. Please try again.')
             return;
         end
@@ -48,11 +48,13 @@ List = [75 150 300; 100 200 300; 100 200 400; 100 200 500; 100 150 300;
 length1=length(Signal);
 length1=(length1-1)/10;
 time_vec=0:.1:length1;
-
-%plot(time_vec, Signal); %To see the plot of the original signal without noise, uncomment this line.
-%create White Noise to Signal:
+plot(time_vec, Signal); %To see the plot of the original signal without noise, uncomment this line.
+xlabel('Time (ms)');
+ylabel('Amplitude');
+%Add White Noise to Signal:
 Signal = awgn(Signal,Noise);
-%plot(time_vec,Signal) %To see the plot of the signal with noise, uncomment this line
-
+plot(time_vec,Signal) %To see the plot of the signal with noise, uncomment this line
+xlabel('Time (ms)');
+ylabel('Amplitude');
 
 end
