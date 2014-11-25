@@ -3,6 +3,10 @@ close all
 clear all 
 clc
 [a] = GoertzelFilter;
+if [a]== 0
+    fprintf('An error occured, no tones detected')
+end
+if [a]~=0
 sizesA = size(a);
 col = sizesA(1,2);
 f = [75 100 150 200 300 400 500];
@@ -12,13 +16,7 @@ for i=1:col
     array1=a((1:7),i);
     a1=sort(array1,'descend');
     bin1= array1>=a1(3);
-%     AveGoert= mean(a((1:7),i));
-%     bin1= a((1:7),i)>AveGoert;
     binaryN = [binaryN bin1];
-%    figure;
-%    stem(f,abs(a((1:7),i)));
-%    hold
-%    plot(f1,AveGoert)
 end
 binaryNTr= transpose(binaryN);
 BTd=bi2de(binaryNTr,'left-msb');
@@ -35,8 +33,14 @@ for i =1:LenD
     Output=[Output digitMatrix(a)];    
 end
 fprintf('The Decoded Digits are :')
+% if Output == 0
+%     disp(char(10))
+%     fprintf('No Digits Detected')
+% end
+% if Output ~= 0
+%     Output
+% end
 Output
-    
-
+end
 end
 
