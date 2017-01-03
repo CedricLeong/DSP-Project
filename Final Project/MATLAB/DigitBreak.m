@@ -86,7 +86,7 @@ for i=1:L3 %Detecting signal duration
     if (B1-A1)>560 || (B1-A1)<390 %Remove from array if too long or too short
         startValidD(i)=[0];
         endValidD(i)=[0];
-        Error_check=Error_check+1;
+        Error_check+=1;
     end
 end
 
@@ -96,7 +96,7 @@ for i=1:(L3-1)%Detecting silence duration
     if (A2-B1)>565 || (A2-B1)<385 %Delete previous number if silence is too large or small
         startValidS(i)=[0];
         endValidS(i)=[0];
-        Error_check=Error_check+1;
+        Error_check+=1;
     end
 end
 
